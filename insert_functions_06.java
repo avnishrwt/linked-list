@@ -97,6 +97,43 @@ public class insert_functions_06 {
 
 
 
+    // insert an element before the value 
+    static node insertval(node head , int val , int n )
+    {
+
+        node addition = new node(n);
+
+
+        if(head == null) return head;
+
+        if(head.data == val)
+        {
+            addition.next = head;
+            return addition;
+        }
+               
+
+        node temp = head;
+        node prev = temp;
+
+
+        while(temp != null)
+        {
+            if(temp.data == val)
+            {
+                prev.next = addition;
+                addition.next = temp;
+                return head;
+            }
+            prev = temp;
+            temp = temp.next;
+        }
+
+        return head;
+    }
+
+
+
 
         public static void main(String[] args) 
     {
@@ -111,6 +148,7 @@ public class insert_functions_06 {
        
         head = insertk(head , 50 , 1);
 
+        head = insertval(head , 40 , 35);
         node temp = head;
         while(temp!= null)
         { 
