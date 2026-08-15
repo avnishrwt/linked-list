@@ -13,7 +13,7 @@ class node
 
 
 
-public class deletefront_05
+public class delete_functions_05
 {
     
     
