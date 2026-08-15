@@ -97,13 +97,37 @@ public class deletefront_05
 
 
         if(temp.next == null) return head;   // k is greater than list length
-
-
             temp = temp.next;
         }
         temp.next = temp.next.next;
     }
 
+        return head;
+    }
+
+
+    // to remove the value from the linked list
+    public static node RemoveElement(node head , int ele)
+    {
+        if(head == null) return head;
+
+        if(head.data == ele) 
+        {
+            head = head.next;
+            return head;
+        }
+        node temp = head;
+        node prev = temp;
+
+        while(temp != null)
+        {
+            if(temp.data == ele)
+            {
+                prev.next = prev.next.next;
+            }
+            prev = temp;
+            temp = temp.next;
+        }
         return head;
     }
 
@@ -123,7 +147,7 @@ public class deletefront_05
         }
 
 
-        head = removek(head, 1);
+        head = RemoveElement(head, 3);
 
 
 
