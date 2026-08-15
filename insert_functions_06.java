@@ -33,7 +33,26 @@ public class insert_functions_06 {
     }
 
 
-    
+    static node insertlast(node head , int n)
+    {
+        node addition = new node(n);
+        node temp = head;
+
+        while(temp.next!= null)
+        {
+            temp = temp.next;
+        }
+
+       
+        addition.next = null;
+
+        temp.next = addition;
+
+        return head;
+    }
+
+
+
 
 
         public static void main(String[] args) 
@@ -45,7 +64,7 @@ public class insert_functions_06 {
         head = insertfront(head, 30);
         head = insertfront(head, 40);
 
-
+        head = insertlast(head, 90);
        
 
 
