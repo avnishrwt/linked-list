@@ -90,6 +90,58 @@ public class convert_arr_DLL_02
         }
     }
 
+
+
+    //DELETING THE Kth ELEMENT 
+    static node deletek(node head , int k)
+    {
+
+        
+        node temp = head;
+        
+        if(head == null)
+            {
+                return null;
+            }
+
+
+        if(k <= 0)
+            return head;
+
+
+        for(int i =1 ; i < k ; i++)
+        {
+            if (temp == null)
+            return head;
+
+            temp = temp.next;
+            
+            if(temp == null)
+                return head;
+        }
+
+        // for first node
+        if (temp.prev == null)
+        {
+            head = temp.next;
+            if (head != null)
+                head.prev = null;
+
+            return head;
+        }   
+
+        temp.prev.next = temp.next;
+
+        if (temp.next != null)
+            temp.next.prev = temp.prev;
+        
+
+        return head;
+    }
+
+
+
+
     public static void traverse(int[] arr , node head)
     {
         node temp;
@@ -106,10 +158,11 @@ public class convert_arr_DLL_02
 
     public static void main(String[] args) 
     {
-        int[] arr = {1 , 2 , 3 , 4 , 5};
+        int[] arr = {1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9};
         node head = ConvertArr2DLL( arr, null);
         head = delfirst(head);
         head = deletelast(head);
+        head = deletek(head, 3);
         traverse(arr, head);
     }
 }
