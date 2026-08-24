@@ -24,18 +24,61 @@ class node
 
 public class insertion_DLL_03 
 {
-    public static node insert_head(node head)
+    // insertion before the head 
+    public static node insert_before_head(node head , int val)
     {
-        node new_head = new node(20 , head , null);
+        node new_head = new node(val , head , null);
         head.prev = new_head;
         return new_head;
     }
+
+
+    // insertion before the tail 
+    public static node insert_before_tail(node head , int val)
+    {
+
+        if(head.next == null)
+        {
+            return insert_before_head(head , val);
+        }
+
+        node tail = head;
+        while(tail.next != null)
+            {
+                tail = tail.next;  
+            }
+            
+            node back = tail.prev;
+            
+            node new_node = new node(val , tail , back);
+
+            back.next = new_node;
+            tail.prev = new_node;
+            
+            
+            return head;
+        }
+
+
+        static void traverse(node head)
+        {
+            node temp = head;
+
+            while(temp!= null)
+            {
+                System.out.print(temp.data + " ");
+                temp = temp.next;
+            }
+        }
+
     public static void main(String[] args) 
     {
         node head = new node(10);
 
-        head = insert_head(head);
+        head = insert_before_head(head , 20);
 
-        System.out.println(head.data);
+        head = insert_before_tail(head , 30);
+        
+        traverse(head);
     }
 }
