@@ -20,13 +20,11 @@ class node {
 public class convert_arr_DLL_02 
 {
     //CONVERTING ARRAY INTO LINKED LIST 
-    public static node ConvertArr2DLL(int[] arr , node head)
-    {
+    public static node ConvertArr2DLL(int[] arr , node head){
         head = new node(arr[0] , null , null);
         node prev = head;
 
-        for(int i =1 ; i < arr.length ; i++)
-        {
+        for(int i =1 ; i < arr.length ; i++){
             node temp = new node(arr[i] , null , prev);
             prev.next = temp;
             prev = temp;
@@ -37,8 +35,7 @@ public class convert_arr_DLL_02
 
 
     //DELETING FIRST NODE OF THE LINKED LIST 
-    public static node delfirst(node head)
-    {
+    public static node delfirst(node head){
         if(head == null){
             System.out.println("linked list is empty");
             return head;
@@ -60,21 +57,18 @@ public class convert_arr_DLL_02
     }
 
     //DELETING THE LAST NODE OF THE LINKED LIST 
-    static node deletelast(node head)
-    {
+    static node deletelast(node head){
         node temp = head;
 
-        if(head == null)
-        {
+        if(head == null){
             return head;
         }
-        while(temp.next!= null)
-        {
+
+        while(temp.next!= null){
             temp = temp.next;
         }
 
-        if(temp == head)
-        {
+        if(temp == head){
             return null;
         }
 
@@ -85,7 +79,6 @@ public class convert_arr_DLL_02
             temp.next = null;
             t.prev = null;
 
-
             return head;
         }
     }
@@ -93,36 +86,31 @@ public class convert_arr_DLL_02
 
 
     //DELETING THE Kth ELEMENT 
-    static node deletek(node head , int k)
-    {
+    static node deletek(node head , int k){
 
-        
         node temp = head;
         
-        if(head == null)
-            {
-                return null;
-            }
+        if(head == null){
+            return null;
+        }
 
 
         if(k <= 0)
             return head;
 
 
-        for(int i =1 ; i < k ; i++)
-        {
+        for(int i =1 ; i < k ; i++){
             if (temp == null)
             return head;
 
             temp = temp.next;
-            
+
             if(temp == null)
                 return head;
         }
 
         // for first node
-        if (temp.prev == null)
-        {
+        if (temp.prev == null){
             head = temp.next;
             if (head != null)
                 head.prev = null;
@@ -134,21 +122,42 @@ public class convert_arr_DLL_02
 
         if (temp.next != null)
             temp.next.prev = temp.prev;
-        
 
         return head;
     }
 
 
 
-
-    public static void traverse(int[] arr , node head)
+    //DELETING THE GIVEN NODE FROM THE LINKED LIST 
+    static void deletenode(node temp)
     {
+        node prev = temp.prev;
+        node front = temp.next;
+
+        if(front == null)
+        {
+            prev.next = null;
+            temp.prev = null;
+            return;
+        }
+
+        prev.next = front;
+        front.prev = prev;
+
+
+        temp.next = null;
+        temp.prev = null;
+         
+    }
+
+
+
+
+    public static void traverse(int[] arr , node head){
         node temp;
         temp = head;
 
-        while(temp!=null)
-        {
+        while(temp!=null){
             // JUST TO CONVERT DATA INTO STRING FORM AND IF ITS THE FIRST NODE THEN NULL AS A STRING
             String prevData = (temp.prev != null) ? String.valueOf(temp.prev.data) : "null";
             System.out.println("data in temp " + temp.data +  " data in prev " + prevData);
@@ -156,13 +165,14 @@ public class convert_arr_DLL_02
         }
     }
 
-    public static void main(String[] args) 
-    {
+    public static void main(String[] args){
         int[] arr = {1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9};
         node head = ConvertArr2DLL( arr, null);
         head = delfirst(head);
         head = deletelast(head);
         head = deletek(head, 3);
+
+        deletenode(head.next);
         traverse(arr, head);
     }
 }
