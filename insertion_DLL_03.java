@@ -60,6 +60,49 @@ public class insertion_DLL_03
         }
 
 
+
+        static node insertion_before_kth(node head , int val , int k)
+        {
+            node temp = head;
+            node prev = temp;
+            int c =1;
+
+            if(head == null)
+            {
+                return head;
+            }
+
+            if(k==1)
+            {
+                return insert_before_head(head, val);
+            }
+
+            while(temp!=null && c<k)
+            {
+                temp = temp.next;
+                c++;
+                
+            }
+
+            if(temp == null)
+            {
+                return head;
+            }
+
+            node back = temp.prev;
+            node new_node = new node(val, temp, prev);
+
+            back.next = new_node;
+            temp.prev = new_node;
+            
+            return head;
+        }
+
+
+
+
+
+
         static void traverse(node head)
         {
             node temp = head;
@@ -79,6 +122,7 @@ public class insertion_DLL_03
 
         head = insert_before_tail(head , 30);
         
+        head = insertion_before_kth(head, 40 , 3);
         traverse(head);
     }
 }
