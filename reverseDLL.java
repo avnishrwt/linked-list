@@ -1,4 +1,4 @@
-public class node 
+class node 
 {
     int data;
     node next;
@@ -12,10 +12,30 @@ public class node
         prev = null;
     }
 }
-
-public class reverseDLL 
+public class ReverseDLL 
 {
 
+    // reversing the linked list 
+
+    public static node reversal(node head)
+    {
+        node last = null;
+        node curr = head;
+
+        while(curr != null)
+        {
+            last = curr.prev;
+            curr.prev = curr.next;
+            curr.next = last;
+
+            curr = curr.prev;
+        }
+
+
+        head = last.prev;
+        return head;
+    }
+    // inserting elements at the last
     public static node insertlast(node head , int val)
     {
         node new_node = new node(val);
@@ -50,6 +70,8 @@ public class reverseDLL
             System.out.print(temp.data + "-> ");
             temp = temp.next;
         }
+
+        System.out.print("NULL");
     }
     public static void main(String[] args) 
     {
@@ -61,9 +83,17 @@ public class reverseDLL
         head = insertlast(head, 50);
         head = insertlast(head, 60);
 
+        
+        traversal(head);
+        
+        System.out.println();
 
+        head = reversal(head);
 
         traversal(head);
-
     }
 }
+
+
+
+
