@@ -1,99 +1,37 @@
-class node 
-{
-    int data;
-    node next;
-    node prev;
-    
-
-    node(int data1)
-    {
-        data = data1;
-        next = null;
-        prev = null;
-    }
-}
 public class ReverseDLL 
 {
-
-    // reversing the linked list 
-
-    public static node reversal(node head)
+    public static node reverseDLL(node head)
     {
-        node last = null;
         node curr = head;
+        node temp = null;
 
         while(curr != null)
         {
-            last = curr.prev;
+            temp = curr.prev;
             curr.prev = curr.next;
-            curr.next = last;
-
+            curr.next = temp;
             curr = curr.prev;
         }
-
-
-        head = last.prev;
-        return head;
-    }
-    // inserting elements at the last
-    public static node insertlast(node head , int val)
-    {
-        node new_node = new node(val);
-
-        if(head == null)
+        if(temp != null)
         {
-            return new_node;
+            head = temp.prev;
         }
-
-        node temp = head;
-
-        while(temp.next != null)
-        {
-            temp = temp.next;
-        }
-
-        temp.next = new_node;
-        new_node.prev = temp;
-        new_node.next = null;
-
-
         return head;
     }
 
 
-
-    static void traversal(node head)
-    {
-        node temp = head;
-        while(temp != null)
-        {
-            System.out.print(temp.data + "-> ");
-            temp = temp.next;
-        }
-
-        System.out.print("NULL");
-    }
     public static void main(String[] args) 
     {
+        int[] arr = {1 , 2 , 3 , 4 , 5};
         node head = null;
-        head = insertlast(head, 10);
-        head = insertlast(head, 20);
-        head = insertlast(head, 30);
-        head = insertlast(head, 40);
-        head = insertlast(head, 50);
-        head = insertlast(head, 60);
-
-        
-        traversal(head);
+        head = DLLarray.conversion(arr , head);
+        DLLarray.traversal(head);
         
         System.out.println();
 
-        head = reversal(head);
+        head = reverseDLL(head);
+        DLLarray.traversal(head);
 
-        traversal(head);
     }
+    
 }
-
-
-
-
