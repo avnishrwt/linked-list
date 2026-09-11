@@ -1,4 +1,4 @@
-public class ReverseDLL 
+public class ReverseDLL04 
 {
     public static node reverseDLL(node head)
     {

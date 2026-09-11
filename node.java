@@ -12,9 +12,3 @@ public class node
     }
 }
 
-public class ReverseDLL 
-{
-    
-
-    
-}
