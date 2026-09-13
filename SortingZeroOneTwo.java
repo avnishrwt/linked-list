@@ -2,16 +2,19 @@ public class SortingZeroOneTwo {
 
     static node sortlist(node head) {
 
+        // Dummy nodes
         node dummyzero = new node(0);
         node dummyone = new node(0);
         node dummytwo = new node(0);
 
+        // Pointers for three lists
         node zero = dummyzero;
         node one = dummyone;
         node two = dummytwo;
 
         node temp = head;
 
+        // Separate 0, 1 and 2
         while (temp != null) {
 
             if (temp.data == 0) {
@@ -30,11 +33,11 @@ public class SortingZeroOneTwo {
             temp = temp.next;
         }
 
-        // Connect the three lists
+        // Connect 0 list -> 1 list -> 2 list
         zero.next = dummyone.next;
         one.next = dummytwo.next;
 
-        // End the final list
+        // Very important: terminate the list
         two.next = null;
 
         return dummyzero.next;
@@ -50,6 +53,12 @@ public class SortingZeroOneTwo {
 
         head = sortlist(head);
 
-        SLLarray.traverse(head);
+        // print linked list
+        node temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
     }
 }
