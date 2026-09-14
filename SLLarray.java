@@ -1,55 +1,28 @@
-public class SortingZeroOneTwo {
+public class SLLarray {
 
-    static node sortlist(node head) {
-
-        node dummyzero = new node(0);
-        node dummyone = new node(0);
-        node dummytwo = new node(0);
-
-        node zero = dummyzero;
-        node one = dummyone;
-        node two = dummytwo;
-
-        node temp = head;
-
-        while (temp != null) {
-
-            if (temp.data == 0) {
-                zero.next = temp;
-                zero = zero.next;
+    // Converts an array into a linked list and returns the head
+    static node conversion(int[] arr, node head) {
+        node tail = null;
+        for (int i = 0; i < arr.length; i++) {
+            node newNode = new node(arr[i]);
+            if (head == null) {
+                head = newNode;
+                tail = newNode;
+            } else {
+                tail.next = newNode;
+                tail = newNode;
             }
-            else if (temp.data == 1) {
-                one.next = temp;
-                one = one.next;
-            }
-            else {
-                two.next = temp;
-                two = two.next;
-            }
-
-            temp = temp.next;
         }
-
-        // Connect the three lists
-        zero.next = dummyone.next;
-        one.next = dummytwo.next;
-
-        // End the final list
-        two.next = null;
-
-        return dummyzero.next;
+        return head;
     }
 
-    public static void main(String[] args) {
-
-        node head = null;
-
-        int[] arr = {1, 2, 0, 1, 2, 0, 0, 1, 2};
-
-        head = SLLarray.conversion(arr, head);
-
-        head = sortlist(head);
-
-        SLLarray.traverse(head);
+    // Displays the linked list
+    static void display(node head) {
+        node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+        System.out.println();
     }
 }
