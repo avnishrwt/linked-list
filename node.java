@@ -1,4 +1,4 @@
-public public class node {
+public class node {
     int data;
     node next;
 
@@ -6,6 +6,4 @@ public public class node {
         this.data = data;
         this.next = null;
     }
-} {
-    
 }
