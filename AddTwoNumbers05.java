@@ -1,7 +1,19 @@
-class AddTwoNumbers05
+class node
 {
-    public static void main(String[] args) 
+    node prev;
+    int data;
+    node next;
+
+    node(int data1)
     {
+        data = data1;
+        prev = null;
+        next = null;
+    }
+}
+
+class AddTwoNumbers05 {
+    public static void main(String[] args) {
         int[] arr1 = {3, 5};
         int[] arr2 = {4, 5, 9, 9};
 
@@ -18,28 +30,34 @@ class AddTwoNumbers05
 
         int carry = 0;
 
-        while(t1 != null || t2 != null || carry != 0)
-        {
+        while (t1 != null || t2 != null || carry != 0) {
             int sum = carry;
 
-            if(t1 != null)
-            {
+            if (t1 != null) {
                 sum += t1.data;
                 t1 = t1.next;
             }
 
-            if(t2 != null)
-            {
+            if (t2 != null) {
                 sum += t2.data;
                 t2 = t2.next;
             }
 
             carry = sum / 10;
-            temp.next = new node(sum % 10);
+            node newNode = new node(sum % 10);
+            
+            // Doubly Linked List ke liye prev link fix karne ke liye:
+            newNode.prev = temp; 
+            temp.next = newNode;
+            
             temp = temp.next;
         }
 
         node head3 = dummynode.next;
+        if (head3 != null) {
+            head3.prev = null; // Head node ka prev disconnect kar rahe hain
+        }
+        
         DLLarray.traversal(head3);
     }
 }

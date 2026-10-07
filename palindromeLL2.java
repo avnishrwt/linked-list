@@ -1,4 +1,4 @@
-// Step1 - use slow and fast pointeer (tortoise and hare algo) to find the mid of the linked list
+// Step1 - use slow and fast pointer (tortoise and hare algo) to find the mid of the linked list
 // Step2 - reverse the second half of this linked List 
 // Step3 - one pointer at head one at new head - traverse and check linked list for palindrome 
 
